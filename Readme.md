@@ -1,3 +1,4 @@
+view the website in [teemal shop](http://charity.co.ke/)
 **Project Title:** Teemal Shop - Ecommerce Website Development for Teemal Auto Spare Garage
 
 **Project Overview:**
