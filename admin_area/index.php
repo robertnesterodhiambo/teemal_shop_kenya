@@ -41,10 +41,10 @@
                     <p class="text-light text-center">Admin Name</p>
                   </div>
                   <div class="button text-center">
-                    <button class = "px-2"><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert products</a></button>
-                    <button class = "px-2"><a href="" class="nav-link text-light bg-info my-1">View products</a></button>
-                    <button class = "px-2"><a href="" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
+                    <button class = "px-2"><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
                     <button class = "px-2"><a href="" class="nav-link text-light bg-info my-1">View Categories</a></button>
+                    <button class = "px-2"><a href="" class="nav-link text-light bg-info my-1">Insert Products</a></button>
+                    <button class = "px-2"><a href="" class="nav-link text-light bg-info my-1">View Products</a></button>
                     <button class = "px-2"><a href="index.php?insert_brands" class="nav-link text-light bg-info my-1">Insert Brands</a></button>
                     <button class = "px-2"><a href="" class="nav-link text-light bg-info my-1">View Brands</a></button>
                     <button class = "px-2"><a href="" class="nav-link text-light bg-info my-1">All orders</a></button>
