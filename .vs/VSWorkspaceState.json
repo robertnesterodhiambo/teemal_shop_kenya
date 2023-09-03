@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\admin_area"
   ],
-  "SelectedNode": "\\index.php",
+  "SelectedNode": "\\admin_area\\insert_product.php",
   "PreviewInSolutionExplorer": false
 }
