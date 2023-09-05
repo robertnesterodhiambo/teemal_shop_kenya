@@ -75,85 +75,36 @@ include("includes/connect.php");
 <div class="row">
     <div class="col-md-10">
         <!-- products` -->
-       <div class="row">
-        <div class="col-md-4 mb-2 "   >
-        <div class="card">
-  <img src="images/bridgestone-sport-rft.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">255/50R19 BRIDGESTONE DUELLER H/P SPORT RUN-FLAT</h5>
-    <p class="card-text">Looking for 255/50R19 Bridgestone Dueler H/P Sport Run-Flat tires in Kenya? 
-        Experience high-performance with enhanced safety. These run-flat tires provide security in case of punctures. 
-        Ensure compatibility and consider professional guidance for optimal results. Elevate your driving with advanced tire technology.
-         Get yours now!</p>
-    <a href="#" class="btn btn-warning">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
+       <div class="row px-1">
+        <!-- fethcing products-->
+        <?php 
+        $select_query = "SELECT * FROM `products` order by rand() limit 0,9";
+        $result_query = mysqli_query($con, $select_query);
+       // $row = mysqli_fetch_assoc($result_query);
+       // echo $row['product_title'];
+       while($row = mysqli_fetch_assoc($result_query)){
+        $product_id = $row['product_id'];
+        $product_title = $row['product_title'];
+        $product_description = $row['product_description'];
+        $product_image1 = $row['product_image1'];
+        $product_price = $row['prduct_price'];
+        $category_id = $row['category_id'];
+        $brand_id = $row['brand_id'];
+        echo "  <div class='col-md-4 mb-2 '   >
+        <div class='card'>
+  <img src='./admin_area/product_images/$product_image1' class='card-img-top' alt='...'>
+  <div class='card-body'>
+    <h5 class='card-title'> $product_title</h5>
+    <p class='card-text'>$product_description</p>
+    <a href='#' class='btn btn-warning'>Add to cart</a>
+    <a href='#' class='btn btn-dark'>View more</a>
   </div>
 </div>
-        </div>
-        <div class="col-md-4 mb-2 "   >
-        <div class="card">
-  <img src="images/BF Goodrich Trail Terrain T 26560R18 110T Tire.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">BF Goodrich Trail Terrain T 26560R18 110T Tire</h5>
-    <p class="card-text">Looking for BF Goodrich Trail Terrain T 265/60R18 110T tires in Kenya? 
-        Experience all-terrain excellence with durability and performance. Ideal for diverse conditions.
-         Prioritize compatibility and regular maintenance for optimal results. Find your tires today!</p>
-    <a href="#" class="btn btn-warning">Add to cart</a> 
-    <a href="#" class="btn btn-dark">View more</a>
-  </div>
-</div>
-        </div>
-        <div class="col-md-4 mb-2 "   >
-        <div class="card">
-  <img src="images/BFGoodrich-Terrain-T-A-KO2-Radial-tire-LT265-60R18-E-119-116S-119S.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">BFGoodrich-Terrain-T-A-KO2-Radial-tire-LT265-60R18-E-119-116S-119S</h5>
-    <p class="card-text">Looking for BFGoodrich Terrain T/A KO2 Radial tire LT265/60R18 E 119/116S (119S) in Kenya? 
-        Discover excellent all-terrain performance with durability. Perfect for diverse conditions.
-         Prioritize compatibility and maintenance for optimal results. Get your tires now!</p>
-         <a href="#" class="btn  btn-warning">Add to cart</a> 
-         <a href="#" class="btn btn-dark">View more</a>
-  </div>
-</div>
-        </div>
-        <div class="col-md-4 mb-2 "   >
-        <div class="card">
-  <img src="images/Bosch DIN 74 S4H35 74AH Battery.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Bosch DIN 74 S4H35 74AH Battery</h5>
-    <p class="card-text">Looking for a Bosch DIN 74 S4H35 74AH battery in Kenya? Trust reliable performance with a 74AH rating.
-         Ideal for various vehicles. Ensure compatibility and consult experts for a seamless replacement. Get yours for dependable power.</p>
-    <a href="#" class="btn btn-warning ">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
-  </div>
-</div>
-        </div>
-        <div class="col-md-4 mb-2 "   >
-        <div class="card">
-  <img src="images/DUNLOP GRANDTREK AT30 26555R19.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">DUNLOP GRANDTREK AT30 26555R19</h5>
-    <p class="card-text">Searching for DUNLOP GRANDTREK AT30 265/55R19 tires in Kenya? Experience superior on-road and off-road performance. 
-        These tires offer durability and traction for diverse terrains. Confirm compatibility and consider professional advice for the best 
-        tire solution. Enhance your driving experience today!</p>
-    <a href="#" class="btn btn-warning ">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
-  </div>
-</div>
-        </div>
-        <div class="col-md-4 mb-2 "   >
-        <div class="card">
-  <img src="images/Smart Car TPMS Tire Pressure Monitoring System Solar Power Digital.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Smart Car TPMS Tire Pressure Monitoring System Solar Power Digital</h5>
-    <p class="card-text">Looking for a Smart Car TPMS (Tire Pressure Monitoring System) with solar power and digital display in Kenya?
-         Ensure optimal tire pressure for safety and efficiency. Solar-powered with a digital interface for convenience. 
-         Enhance your driving experience with advanced technology. Get yours now!</p>
-    <a href="#" class="btn btn-warning">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
-  </div>
-</div>
-        </div>
+   
+        </div>";
+       }
+        ?>
+      
         </div>
         </div>
      

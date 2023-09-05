@@ -31,7 +31,7 @@ if(isset($_POST['insert_product'])){
         // insert query into
         $insert_product = "INSERT INTO `products` (product_title,product_description,productt_keywords,category_id,
         brand_id,product_image1,product_image2,product_image3,prduct_price,date,status) values('$product_title','$product_description',
-        '$product_keywords','$product_category','$product_Brand','$product_Price','$product_image1','$product_image2','$product_image3',
+        '$product_keywords','$product_category','$product_Brand','$product_image1','$product_image2','$product_image3','$product_Price',
         now(),'$product_status')";
         $result_query = mysqli_query($con,$insert_product);
         if($result_query){
