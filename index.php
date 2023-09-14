@@ -82,6 +82,7 @@ include("funcions/common_functions.php");
         //calling function
         getproducts();
         gettUniquecat();
+        gettUniquebraand();
       //  getUnique_cat();
    
 //         </div>";
@@ -116,7 +117,6 @@ include("funcions/common_functions.php");
       
         </ul>
     </div>
-   
 </div>
 <!-- last child -->
 

@@ -41,9 +41,57 @@ function gettUniquecat() {
   //conditon to chhchecck isset or not
   if (isset($_GET['category'])) {
     $category_id = $_GET['category'];
+
 // getting products information
 $select_query = "SELECT * FROM `products` where category_id = $category_id";
 $result_query = mysqli_query($con, $select_query);
+
+$num_of_row = mysqli_num_rows($result_query);
+if($num_of_row == 0) {
+  echo "<h2 class = 'text-center text-danger'>No products for this category</h2>";
+}
+// $row = mysqli_fetch_assoc($result_query);
+// echo $row['product_title'];
+while($row = mysqli_fetch_assoc($result_query)){
+$product_id = $row['product_id'];
+$product_title = $row['product_title'];
+$product_description = $row['product_description'];
+$product_image1 = $row['product_image1'];
+$product_price = $row['prduct_price'];
+$category_id = $row['category_id'];
+$brand_id = $row['brand_id'];
+echo "  <div class='col-md-4 mb-2 '   >
+<div class='card'>
+<img src='./admin_area/product_images/$product_image1' class='card-img-top' alt='...'>
+<div class='card-body'>
+<h5 class='card-title'> $product_title</h5>
+<p class='card-text'>$product_description</p>
+<a href='#' class='btn btn-warning'>Add to cart</a>
+<a href='#' class='btn btn-dark'>View more</a>
+</div>
+</div>
+
+</div>";
+} }}
+
+// getting unique brands
+
+
+function gettUniquebraand() {
+  
+  global $con;  
+  //conditon to chhchecck isset or not
+  if (isset($_GET['brand'])) {
+    $brand_id = $_GET['brand'];
+
+// getting products information
+$select_query = "SELECT * FROM `products` where brand_id = $brand_id";
+$result_query = mysqli_query($con, $select_query);
+
+$num_of_row = mysqli_num_rows($result_query);
+if($num_of_row == 0) {
+  echo "<h2 class = 'text-center text-danger'>This brands for this category</h2>";
+}
 // $row = mysqli_fetch_assoc($result_query);
 // echo $row['product_title'];
 while($row = mysqli_fetch_assoc($result_query)){
