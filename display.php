@@ -80,7 +80,7 @@ include("funcions/common_functions.php");
         <!-- fethcing products-->
         <?php 
         //calling function
-        getproducts();
+        get_all_product();
         gettUniquecat();
         gettUniquebraand();
       //  getUnique_cat();
@@ -120,6 +120,7 @@ include("funcions/common_functions.php");
 </div>
 <!-- last child -->
 
+<!-- include footer --> 
 <?php 
 include('./includes/footer.php');
 ?>
