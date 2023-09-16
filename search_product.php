@@ -44,7 +44,7 @@ include("funcions/common_functions.php");
           <a class="nav-link" href="#">total price: 100</a>
         </li>
       </ul>
-      <form class="d-flex" action="search_product.php" method="get">
+      <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  name = "search_data">
         <!-- <button class="btn btn-outline-dark" type="submit">Search</button> -->
        <input type="submit" value="Search" class = "btn btn-outline-dark" name = "search_dataproduct">
@@ -81,7 +81,7 @@ include("funcions/common_functions.php");
         <!-- fethcing products-->
         <?php 
         //calling function
-        getproducts();
+        search_product();
         gettUniquecat();
         gettUniquebraand();
       //  getUnique_cat();
