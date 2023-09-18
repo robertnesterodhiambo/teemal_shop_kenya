@@ -47,7 +47,11 @@ include("funcions/common_functions.php");
         </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">total price: 100</a>
+          <a class="nav-link" href="#">
+          <?php 
+total_cart_price();
+            ?>
+          </a>
         </li>
       </ul>
       <form class="d-flex" action="search_product.php" method="get">
