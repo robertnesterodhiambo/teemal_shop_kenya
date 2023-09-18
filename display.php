@@ -40,7 +40,7 @@ include("funcions/common_functions.php");
         <li class="nav-item">
           <a class="nav-link disabled"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
           <sup>
-          <?php 
+            <?php 
           cart_item();
           ?>     
         </sup>
@@ -50,9 +50,10 @@ include("funcions/common_functions.php");
           <a class="nav-link" href="#">total price: 100</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-dark" type="submit">Search</button>
+      <form class="d-flex" action="search_product.php" method="get">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  name = "search_data">
+        <!-- <button class="btn btn-outline-dark" type="submit">Search</button> -->
+       <input type="submit" value="Search" class = "btn btn-outline-dark" name = "search_dataproduct">
       </form>
     </div>
   </div>
