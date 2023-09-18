@@ -1,5 +1,8 @@
 # Teemal Garage - Nairobi's Premier Tire Shop and Vehicle Service Center
 
+##	[Visit Teemal Shop](http://teemal.shop/)
+
+
 Welcome to the Teemal Garage, your one-stop solution for all your tire and vehicle service needs in Nairobi. This `README` will guide you through the key features and functionalities of our e-commerce website.
 
 ## Table of Contents

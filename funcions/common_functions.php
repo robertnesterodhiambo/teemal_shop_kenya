@@ -25,7 +25,7 @@ echo "  <div class='col-md-4 mb-2 '   >
 <div class='card-body'>
 <h5 class='card-title'> $product_title</h5>
 <p class='card-text'>$product_description</p>
-<a href='#' class='btn btn-warning'>Add to cart</a>
+<a href='index.php?add_to_cart=$product_id' class='btn btn-warning'>Add to cart</a>
 <a href='product_details.php?product_id=$product_id' class='btn btn-dark'>View more</a>
 </div>
 </div>
@@ -58,7 +58,7 @@ echo "  <div class='col-md-4 mb-2 '   >
 <div class='card-body'>
 <h5 class='card-title'> $product_title</h5>
 <p class='card-text'>$product_description</p>
-<a href='#' class='btn btn-warning'>Add to cart</a>
+<a href='index.php?add_to_cart=$product_id' class='btn btn-warning'>Add to cart</a>
 <a href='product_details.php?product_id=$product_id' class='btn btn-dark'>View more</a>
 
 </div>
@@ -101,7 +101,7 @@ echo "  <div class='col-md-4 mb-2 '   >
 <div class='card-body'>
 <h5 class='card-title'> $product_title</h5>
 <p class='card-text'>$product_description</p>
-<a href='#' class='btn btn-warning'>Add to cart</a>
+<a href='index.php?add_to_cart=$product_id' class='btn btn-warning'>Add to cart</a>
 <a href='product_details.php?product_id=$product_id' class='btn btn-dark'>View more</a>
 
 </div>
@@ -144,7 +144,7 @@ echo "  <div class='col-md-4 mb-2 '   >
 <div class='card-body'>
 <h5 class='card-title'> $product_title</h5>
 <p class='card-text'>$product_description</p>
-<a href='#' class='btn btn-warning'>Add to cart</a>
+<a href='index.php?add_to_cart=$product_id' class='btn btn-warning'>Add to cart</a>
 <a href='product_details.php?product_id=$product_id' class='btn btn-dark'>View more</a>
 </div>
 </div>
@@ -213,7 +213,7 @@ echo "  <div class='col-md-4 mb-2 '   >
 <div class='card-body'>
 <h5 class='card-title'> $product_title</h5>
 <p class='card-text'>$product_description</p>
-<a href='#' class='btn btn-warning'>Add to cart</a>
+<a href='index.php?add_to_cart=$product_id' class='btn btn-warning'>Add to cart</a>
 <a href='product_details.php?product_id=$product_id' class='btn btn-dark'>View more</a>
 
 </div>
@@ -253,8 +253,8 @@ echo "  <div class='col-md-4 mb-2 '   >
 <div class='card-body'>
 <h5 class='card-title'> $product_title</h5>
 <p class='card-text'>$product_description</p>
-<a href='#' class='btn btn-warning'>Add to cart</a>
-<a href='product_details.php?product_id=$product_id' class='btn btn-dark'>View more</a>
+<a href='index.php?add_to_cart=$product_id' class='btn btn-warning'>Add to cart</a>
+<a href='index.php' class='btn btn-dark'>Home</a>
 </div>
 </div>
 
@@ -268,10 +268,10 @@ echo "  <div class='col-md-4 mb-2 '   >
                 related products
               </h4>
               <div class='col-md-6'>
-              <img src='./admin_area/./admin_area/product_images/$product_image2' class='card-img-top' alt='$product_title'>                
+              <img src='./admin_area/product_images/$product_image2' class='card-img-top' alt='$product_title'>                
               </div>
               <div class='col-md-6'>
-              <img src='./admin_area/product_images/./admin_area/product_images/$product_image3' class='card-img-top' alt='$product_title'>
+              <img src='./admin_area/product_images/$product_image3' class='card-img-top' alt='$product_title'>
               </div>
             </div>
           </div>
@@ -296,4 +296,25 @@ function getIPAddress() {
 }  
 $ip = getIPAddress();  
 echo 'User Real IP Address - '.$ip;  
+
+// cart function
+function cart(){
+if(isset($_GET['add_to_cart'])){
+  global $con;
+  $get_ip_address = getIPAddress();
+  $get_product_id = $_GET['add_to_cart'];
+  $select_query = "SELECT * FROM `cart_details` WHERE ip_address = '$get_ip_address' and product_id = $get_product_id";
+  $result_query = mysqli_query($con, $select_query);
+  $num_of_row = mysqli_num_rows($result_query);
+if($num_of_row > 0) {
+  echo "<script>alert('This item is already in the cart') </script>";
+  echo "<script>window.open('index.php','_self')</script>";
+} else {
+  $insert_query = "INSERT INTO `cart_details` (product_id,ip_address,quantity) values($get_product_id,'$get_ip_address',0)";
+  $result_query = mysqli_query($con, $insert_query);
+  echo "<script>alert('Succesfully added to cart ') </script>";
+  echo "<script>window.open('index.php','_self')</script>";
+}
+}
+}
 ?>
