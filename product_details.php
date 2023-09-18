@@ -78,38 +78,10 @@ include("funcions/common_functions.php");
     <div class="col-md-10">
         <!-- products` -->
        <div class="row">
-        <div class="col-md-4">
-          <!-- cards -->
-          <div class='card'>
-<img src='./admin_area/product_images/BF Goodrich Trail Terrain T 26560R18 110T Tire.jpg' class='card-img-top' alt='...'>
-<div class='card-body'>
-<h5 class='card-title'> $product_title</h5>
-<p class='card-text'>$product_description</p>
-<a href='#' class='btn btn-warning'>Add to cart</a>
-<a href='product_details.php?product_id=$product_id' class='btn btn-dark'>View more</a>
-</div>
-</div>
-        </div>
-        <div class="col-md-8">
-          <!-- related images -->
-          <div class="row">
-            <div class="col-md-12">
-              <h4 class="text-center mb-5 text-warning">
-                related products
-              </h4>
-              <div class="col-md-6">
-              <img src='./admin_area/product_images/BF Goodrich Trail Terrain T 26560R18 110T Tire.jpg' class='card-img-top' alt='...'>                
-              </div>
-              <div class="col-md-6">
-              <img src='./admin_area/product_images/BF Goodrich Trail Terrain T 26560R18 110T Tire.jpg' class='card-img-top' alt='...'>
-              </div>
-            </div>
-          </div>
-        </div>
         <!-- fethcing products-->
         <?php 
         //calling function
-     
+        view_deetails();
         gettUniquecat();
         gettUniquebraand();
       //  getUnique_cat();
