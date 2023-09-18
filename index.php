@@ -84,6 +84,7 @@ include("funcions/common_functions.php");
         getproducts();
         gettUniquecat();
         gettUniquebraand();
+        getIPAddress();
       //  getUnique_cat();
    
 //         </div>";
