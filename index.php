@@ -38,7 +38,12 @@ include("funcions/common_functions.php");
           <a class="nav-link" href="#">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>1</sup></a>
+          <a class="nav-link disabled"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <sup>
+             <?php 
+          cart_item();
+          ?> 
+          </sup></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">total price: 100</a>
