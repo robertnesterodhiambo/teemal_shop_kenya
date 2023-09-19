@@ -10,6 +10,15 @@ include("funcions/common_functions.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teemal cart</title>
     <link rel="stylesheet" href="style.css">
+    <!-- internal syling -->
+    <style>
+        .cart_img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+    </style>
+
     <!--bootstrap css link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <!-- fonts link-->
@@ -86,25 +95,53 @@ cart();
                     <th>Quantity</th>
                     <th>Total price</th>
                     <th>Remove</th>
-                    <th>Operations </th>
+                    <th colspan="2">Operations </th>
                 </tr>
                 <tbody>
+                    <!-- php dynamic cart-items -->
+                    <?php
+ global $con;
+ $get_ip_address = getIPAddress();
+ $total = 0;
+ $cart_query = "SELECT * FROM `cart_details` where ip_address = '$get_ip_address'";
+ $result_query = mysqli_query($con, $cart_query);
+ while($row = mysqli_fetch_array($result_query)){
+   $product_id = $row['product_id'];
+   $select_procucts = "SELECT * FROM `products` where product_id = '$product_id'";
+   $result_products = mysqli_query($con, $select_procucts);
+   while($row_product_price = mysqli_fetch_array($result_products)){
+     $product_price = array($row_product_price['prduct_price']);
+     $price_table = $row_product_price['prduct_price'];
+     $product_title = $row_product_price['product_title'];
+     $product_image1 = $row_product_price['product_image1'];
+     $product_value =  array_sum($product_price);
+     $total += $product_value;
+
+                    ?>
                     <tr>
-                        <td>DUNLOP GRANDTREK </td>
-                        <td><img src="./images/DUNLOP GRANDTREK AT30 26555R19.jpg" ></td>
+                        <td><?php echo  $product_title ?></td>
+                        <td><img src="./images/<?php echo $product_image1 ?>" class="cart_img" ></td>
                         <td><input type = "text" name = "" id = ""></td>
-                        <td>9000</td>
-                        <td><input type = "checkbox"></td>
+                        <td><?php echo $price_table?></td>
+                        <td><input type = "checkbox" class = "form-input w-50"></td>
                         <td>
-                            <p>uppdate</p>
-                            <p>remove</p>
+                            <button class="border-0 bg-info px-3 mb-3 py-2">
+UPDATE
+                            </button>
+                            <button class="border-0 bg-info px-3 mx-3 py-2">
+REMOVE
+                            </button>
                         </td>
                     </tr>
                 </tbody>
+                <?php    }
+ }?>
             </thead>
         </table>
-        <div class = "d-flexmb-5">
-            <h4 class="px-3">Subtotoal:<strong class = text-info>5000</strong></h4>
+        <div class = "d-flex mb-5">
+            <h4 class="px-3">Subtotoal:<strong class = text-info><?php 
+            echo $total
+            ?></strong></h4>
             <a href = "index.php"><button class="border-0 bg-info px-3 mx-3 py-2">
                 Continue Shopping
             </button></a>
