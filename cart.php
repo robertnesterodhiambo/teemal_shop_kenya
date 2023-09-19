@@ -8,7 +8,7 @@ include("funcions/common_functions.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teemal tyre shop</title>
+    <title>teemal cart</title>
     <link rel="stylesheet" href="style.css">
     <!--bootstrap css link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -45,19 +45,7 @@ include("funcions/common_functions.php");
           ?> 
           </sup></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <?php 
-total_cart_price();
-            ?>
-          </a>
-        </li>
       </ul>
-      <form class="d-flex" action="search_product.php" method="get">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  name = "search_data">
-        <!-- <button class="btn btn-outline-dark" type="submit">Search</button> -->
-       <input type="submit" value="Search" class = "btn btn-outline-dark" name = "search_dataproduct">
-      </form>
     </div>
   </div>
 </nav>
@@ -88,50 +76,42 @@ cart();
 </div>
 
 <!-- fourth child -->
-<div class="row">
-    <div class="col-md-10">
-        <!-- products` -->
-       <div class="row px-1">
-        <!-- fethcing products-->
-        <?php 
-        //calling function
-        getproducts();
-        gettUniquecat();
-        gettUniquebraand();
-        getIPAddress();
-      //  getUnique_cat();
-   
-//         </div>";
-//        }
-        ?>
-      
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>Produt title</th>
+                    <th>product image</th>
+                    <th>Quantity</th>
+                    <th>Total price</th>
+                    <th>Remove</th>
+                    <th>Operations </th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>DUNLOP GRANDTREK </td>
+                        <td><img src="./images/DUNLOP GRANDTREK AT30 26555R19.jpg" ></td>
+                        <td><input type = "text" name = "" id = ""></td>
+                        <td>9000</td>
+                        <td><input type = "checkbox"></td>
+                        <td>
+                            <p>uppdate</p>
+                            <p>remove</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </thead>
+        </table>
+        <div class = "d-flexmb-5">
+            <h4 class="px-3">Subtotoal:<strong class = text-info>5000</strong></h4>
+            <a href = "index.php"><button class="border-0 bg-info px-3 mx-3 py-2">
+                Continue Shopping
+            </button></a>
+            <a href = "index.php"><button class="border-0 bg-secondary p-3 py-2">
+                Checkout
+            </button></a>
         </div>
-        </div>
-     
-    <div class="col-md-2 bg-dark p-0">
-        <!-- side navigation -->
-        <!-- brands to be displayed -->
-        <ul class="navbar-nav me-auo text-center">
-            <li class="nav-item bg-dark">
-                <a href="#" class="nav-link text-light"><h4>  Brands</h4></a>
-            </li>
-            <?php 
-            getBrand();
-
-?>
-        </ul>
-        <!-- category to be displayed -->
-        <ul class="navbar-nav me-auo text-center">
-            <li class="nav-item bg-info">
-                <a href="#" class="nav-link text-light bg-dark"><h4> Categories</h4></a>
-            </li>
-
-            <?php
-            getCategory(); 
-          
-?>
-      
-        </ul>
     </div>
 </div>
 <!-- last child -->
