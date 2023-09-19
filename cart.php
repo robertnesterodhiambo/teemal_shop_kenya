@@ -84,9 +84,10 @@ cart();
     </P>
 </div>
 
-<!-- fourth child -->
 <div class="container">
+<!-- fourth child -->
     <div class="row">
+        <form action = "" method = "post">
         <table class="table table-bordered text-center">
             <thead>
                 <tr>
@@ -116,18 +117,28 @@ cart();
      $product_image1 = $row_product_price['product_image1'];
      $product_value =  array_sum($product_price);
      $total += $product_value;
-
                     ?>
                     <tr>
                         <td><?php echo  $product_title ?></td>
                         <td><img src="./images/<?php echo $product_image1 ?>" class="cart_img" ></td>
-                        <td><input type = "text" name = "" id = ""></td>
+                        <td><input type = "text" name = "qty" id = ""></td>
+                        <?php 
+                           $get_ip_address = getIPAddress();
+                           global $con;
+                           if(isset($_POST['update_cart'])){
+                            $quantities = $_POST['qty'];
+                            $update_cart = "update `cart_details` set quantity = '$quantities' where ip_address='$get_ip_address'";
+                           $result_products_qty = mysqli_query($con,$update_cart);
+                           $total = $total*(int)$quantities;
+                        }
+                        ?>
                         <td><?php echo $price_table?></td>
                         <td><input type = "checkbox" class = "form-input w-50"></td>
                         <td>
-                            <button class="border-0 bg-info px-3 mb-3 py-2">
+                            <!-- <button class="border-0 bg-info px-3 mb-3 py-2">
 UPDATE
-                            </button>
+                            </button> -->
+                            <input name = "update_cart" type ="submit" value = "update_cart" class="border-0 bg-info px-3 mb-3 py-2">
                             <button class="border-0 bg-info px-3 mx-3 py-2">
 REMOVE
                             </button>
@@ -151,6 +162,7 @@ REMOVE
         </div>
     </div>
 </div>
+</form>
 <!-- last child -->
 
 <?php 
