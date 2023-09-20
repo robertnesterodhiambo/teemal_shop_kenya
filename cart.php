@@ -168,9 +168,9 @@ REMOVE
             echo $total
             ?></strong></h4>
             <input name = 'continue_shopping' type ='submit' value = 'continue' class='border-0 bg-info px-3 mx-3 py-2'>
-            <a href = 'index.php'><button class='border-0 bg-secondary p-3 py-2'>
-                Checkout
-            </button></a>";
+           <button class='border-0 bg-secondary p-3 py-2'>  <a href = 'checkout.php' class  = 'text-light text-decoration-none'>
+                Checkout</a>
+            </button>";
           }
           else {
             echo "<input name = 'continue_shopping' type ='submit' value = 'continue' class='border-0 bg-info px-3 mx-3 py-2'>";
