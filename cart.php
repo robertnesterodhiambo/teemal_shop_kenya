@@ -133,15 +133,16 @@ cart();
                         }
                         ?>
                         <td><?php echo $price_table?></td>
-                        <td><input type = "checkbox" class = "form-input w-50"></td>
+                        <td><input type = "checkbox" class = "form-input w-50" name = "removeitem[]" value ="<?php echo  $product_id?>"></td>
                         <td>
                             <!-- <button class="border-0 bg-info px-3 mb-3 py-2">
 UPDATE
                             </button> -->
                             <input name = "update_cart" type ="submit" value = "update_cart" class="border-0 bg-info px-3 mb-3 py-2">
-                            <button class="border-0 bg-info px-3 mx-3 py-2">
+                            <!-- <button class="border-0 bg-info px-3 mx-3 py-2">
 REMOVE
-                            </button>
+                            </button> -->
+                            <input name = "remove_cart" type ="submit" value = "remove" class="border-0 bg-info px-3 mb-3 py-2">
                         </td>
                     </tr>
                 </tbody>
@@ -163,6 +164,23 @@ REMOVE
     </div>
 </div>
 </form>
+<!-- function to remove item ------------------------------->
+<?php 
+function remove_cart_item(){
+  global $con;
+  if(isset($_POST['remove_cart'])){
+    foreach($_POST['removeitem'] as $remove_id){
+      echo $remove_id;
+      $delete_query = "DELETE  FROM `cart_details` where product_id = $remove_id";
+      $run_delete = mysqli_query($con,$delete_query);
+      if ($run_delete){
+        echo "<script>window.open('cart.php','_self');</script>";
+      }
+    }
+  }
+}
+echo $remove_item = remove_cart_item();
+?>
 <!-- last child -->
 
 <?php 
