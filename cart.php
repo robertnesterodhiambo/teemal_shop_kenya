@@ -89,15 +89,7 @@ cart();
     <div class="row">
         <form action = "" method = "post">
         <table class="table table-bordered text-center">
-            <thead>
-                <tr>
-                    <th>Produt title</th>
-                    <th>product image</th>
-                    <th>Quantity</th>
-                    <th>Total price</th>
-                    <th>Remove</th>
-                    <th colspan="2">Operations </th>
-                </tr>
+          
                 <tbody>
                     <!-- php dynamic cart-items -->
                     <?php
@@ -106,6 +98,17 @@ cart();
  $total = 0;
  $cart_query = "SELECT * FROM `cart_details` where ip_address = '$get_ip_address'";
  $result_query = mysqli_query($con, $cart_query);
+ $result_count  = mysqli_num_rows($result_query);
+ if ($result_count > 0){
+  echo "  <thead>
+  <tr>
+      <th>Produt title</th>
+      <th>product image</th>
+      <th>Quantity</th>
+      <th>Total price</th>
+      <th>Remove</th>
+      <th colspan='2'>Operations </th>
+  </tr>";
  while($row = mysqli_fetch_array($result_query)){
    $product_id = $row['product_id'];
    $select_procucts = "SELECT * FROM `products` where product_id = '$product_id'";
@@ -146,20 +149,36 @@ REMOVE
                         </td>
                     </tr>
                 </tbody>
-                <?php    }
+                <?php    } }
+ } else{
+  echo "<h2 class = ' text-center text-danger'>Cart is empty</h2";
  }?>
             </thead>
         </table>
         <div class = "d-flex mb-5">
-            <h4 class="px-3">Subtotoal:<strong class = text-info><?php 
+          <?php 
+          global $con;
+          $get_ip_address = getIPAddress();
+          $total = 0;
+          $cart_query = "SELECT * FROM `cart_details` where ip_address = '$get_ip_address'";
+          $result_query = mysqli_query($con, $cart_query);
+          $result_count  = mysqli_num_rows($result_query);
+          if ($result_count > 0){
+            echo "   <h4 class='px-3'>Subtotoal:<strong class = text-info><?php 
             echo $total
             ?></strong></h4>
-            <a href = "index.php"><button class="border-0 bg-info px-3 mx-3 py-2">
-                Continue Shopping
-            </button></a>
-            <a href = "index.php"><button class="border-0 bg-secondary p-3 py-2">
+            <input name = 'continue_shopping' type ='submit' value = 'continue' class='border-0 bg-info px-3 mx-3 py-2'>
+            <a href = 'index.php'><button class='border-0 bg-secondary p-3 py-2'>
                 Checkout
-            </button></a>
+            </button></a>";
+          }
+          else {
+            echo "<input name = 'continue_shopping' type ='submit' value = 'continue' class='border-0 bg-info px-3 mx-3 py-2'>";
+          } 
+          if(isset($_POST['continue_shopping'])){
+            echo "<script> window.open('index.php','_self');</script>";
+          }
+          ?>
         </div>
     </div>
 </div>
