@@ -74,6 +74,7 @@ if(isset($_POST['user_register'])){
     $user_username = $_POST['user_username'];
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
+    $hash_password = password_hash($user_password,PASSWORD_DEFAULT);
     $conf_user_password = $_POST['conf_user_password'];
     $user_address = $_POST['user_address'];
     $user_contact = $_POST['user_contact'];
@@ -97,7 +98,7 @@ if(isset($_POST['user_register'])){
     move_uploaded_file($user_image_temp, "../users_area/user_images/$user_image");
 
     // Corrected SQL query (use double quotes for column names)
-    $insert_query = "INSERT INTO USER_TABLE (username, user_email, user_password, user_image, user_ip, address, mobile) VALUES ('$user_username', '$user_email', '$user_password', '$user_image', '$user_ip', '$user_address', '$user_mobile')";
+    $insert_query = "INSERT INTO USER_TABLE (username, user_email, user_password, user_image, user_ip, address, mobile) VALUES ('$user_username', '$user_email', '$hash_password', '$user_image', '$user_ip', '$user_address', '$user_mobile')";
 
     // Assuming you have a database connection established as '$con', execute the query
     $sql_execute = mysqli_query($con, $insert_query);
