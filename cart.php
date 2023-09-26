@@ -1,6 +1,6 @@
 <!-- conect file -->
 <?php 
-include("includes/connect.php");
+include("./includes/connect.php");
 include("funcions/common_functions.php");
 ?>
 <!DOCTYPE html>
@@ -71,8 +71,8 @@ cart();
           <a class="nav-link" href="#">Welcome Guest</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>       
+          <a class="nav-link" href="./users_area/user_login.php">Login</a>
+        </li>         
 </ul>
 </nav>
 
@@ -168,7 +168,7 @@ REMOVE
             echo $total
             ?></strong></h4>
             <input name = 'continue_shopping' type ='submit' value = 'continue' class='border-0 bg-info px-3 mx-3 py-2'>
-           <button class='border-0 bg-secondary p-3 py-2'>  <a href = 'checkout.php' class  = 'text-light text-decoration-none'>
+           <button class='border-0 bg-secondary p-3 py-2'>  <a href = './users_area/checkout.php' class  = 'text-light text-decoration-none'>
                 Checkout</a>
             </button>";
           }

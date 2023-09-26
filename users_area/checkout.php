@@ -1,6 +1,6 @@
 <!-- conect file -->
 <?php 
-include("includes/connect.php");
+include('../includes/connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +56,7 @@ include("includes/connect.php");
           <a class="nav-link" href="#">Welcome Guest</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="user_login.php">Login</a>
         </li>       
 </ul>
 </nav>
@@ -76,7 +76,7 @@ include("includes/connect.php");
         <div class="row">
             <?php 
             if(!isset($_SESSION['username'])){
-                include('users_area/user_login.php');
+                include('user_login.php');
             } else {
                 include('payment.php');
             }
@@ -86,7 +86,7 @@ include("includes/connect.php");
 <!-- last child -->
 
 <?php 
-include('./includes/footer.php');
+include('../includes/connect.php');
 ?>
     <!-- bootstra js link-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

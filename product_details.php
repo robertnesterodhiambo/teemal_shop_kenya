@@ -69,8 +69,8 @@ total_cart_price();
           <a class="nav-link" href="#">Welcome Guest</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>       
+          <a class="nav-link" href="./users_area/user_login.php">Login</a>
+        </li>         
 </ul>
 </nav>
 
