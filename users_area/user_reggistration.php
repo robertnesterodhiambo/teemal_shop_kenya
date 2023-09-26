@@ -1,3 +1,7 @@
+<?php 
+include('../includes/connect.php');
+include('../funcions/common_functions.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,3 +67,36 @@
     </div>
 </body>
 </html>
+
+<!-- php code -->
+<?php 
+if(isset($_POST['user_register'])){
+    $user_username = $_POST['user_username'];
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_password'];
+    $conf_user_password = $_POST['conf_user_password'];
+    $user_address = $_POST['user_address'];
+    $user_contact = $_POST['user_contact'];
+    $user_image = $_FILES['user_image']['name'];
+    $user_image_temp = $_FILES['user_image']['tmp_name'];
+    $user_ip = getIPAddress();
+    $user_mobile = $_POST['user_contact'];
+
+    // Move uploaded image to the correct directory
+    move_uploaded_file($user_image_temp, "./users_area/user_images/$user_image");
+
+    // Corrected SQL query (use double quotes for column names)
+    $insert_query = "INSERT INTO USER_TABLE (username, user_email, user_password, user_image, user_ip, address, mobile) VALUES ('$user_username', '$user_email', '$user_password', '$user_image', '$user_ip', '$user_address', '$user_mobile')";
+
+    // Assuming you have a database connection established as '$con', execute the query
+    $sql_execute = mysqli_query($con, $insert_query);
+
+    if ($sql_execute){
+        echo "<script>alert('Account registered successfully');</script>";
+    } else {
+        // Print the MySQL error message if the query fails
+        die(mysqli_error($con));
+    }
+}
+
+?>

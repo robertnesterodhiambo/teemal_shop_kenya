@@ -1,6 +1,6 @@
 <?php 
 $con= mysqli_connect('localhost','root','','mystore');
 if(!$con){
-    echo 'teemal deadline';
+    echo 'teemal out fo site';
 }
 ?>
