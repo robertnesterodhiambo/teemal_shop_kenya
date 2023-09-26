@@ -82,8 +82,19 @@ if(isset($_POST['user_register'])){
     $user_ip = getIPAddress();
     $user_mobile = $_POST['user_contact'];
 
+    // select query 
+    $select_query = "SELECT * FROM `user_table` WHERE username = '$user_username' or user_email = '$user_email'";
+    $result = mysqli_query($con, $select_query);
+    $rows_count = mysqli_num_rows($result);
+
+    if($rows_count > 0) {
+        echo "<script>alert('User email or username already exists');</script>";
+    } else if($user_password!=$conf_user_password) {
+        echo "<script>alert('Passwords do not match');</script>";      
+    }
+    else {
     // Move uploaded image to the correct directory
-    move_uploaded_file($user_image_temp, "./users_area/user_images/$user_image");
+    move_uploaded_file($user_image_temp, "../users_area/user_images/$user_image");
 
     // Corrected SQL query (use double quotes for column names)
     $insert_query = "INSERT INTO USER_TABLE (username, user_email, user_password, user_image, user_ip, address, mobile) VALUES ('$user_username', '$user_email', '$user_password', '$user_image', '$user_ip', '$user_address', '$user_mobile')";
@@ -97,6 +108,7 @@ if(isset($_POST['user_register'])){
         // Print the MySQL error message if the query fails
         die(mysqli_error($con));
     }
+}
 }
 
 ?>

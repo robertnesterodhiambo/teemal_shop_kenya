@@ -34,7 +34,7 @@ include('../includes/connect.php');
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="./user_reggistration.php">Register</a>
         </li>
       </ul>
       <form class="d-flex" action="search_product.php" method="get">
