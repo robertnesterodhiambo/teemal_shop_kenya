@@ -1,3 +1,6 @@
+<?php 
+include("../includes/connect.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,3 +41,24 @@
     </div>
 </body>
 </html>
+
+<?php 
+if(isset($_POST['user_login'])){
+    $user_username = $_POST['user_username'];
+    $user_password = $_POST['user_password'];
+    $select_query = "SELECT * FROM `user_table` where username = '$user_username'";
+    $result = mysqli_query($con ,$select_query);
+    $row_num_count = mysqli_num_rows($result);
+    $row_data = mysqli_fetch_assoc($result);
+    if ($row_num_count > 0){
+        if(password_verify($user_password,$row_data['user_password'])){
+            echo "<script>alert('LOG IN SUCESFULL');</script>";
+        } else {
+            echo "<script>alert('invalid credentials');</script>";
+        }
+    } else {
+        echo "<script>alert('invalid credentials');</script>";
+    }
+
+}
+?>
